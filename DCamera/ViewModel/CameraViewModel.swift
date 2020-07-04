@@ -10,10 +10,9 @@ import SwiftUI
 import AVFoundation
 import UIKit
 
-class CapturePhotoViewModel: NSObject, ObservableObject {
+class CameraViewModel: NSObject, ObservableObject {
     
-    @Published var image: UIImage = UIImage()
-    
+    var imageModel = ImageModel()
     // Layer for preview
     var previewLayer: AVCaptureVideoPreviewLayer!
     // Session
@@ -34,9 +33,21 @@ class CapturePhotoViewModel: NSObject, ObservableObject {
         beginSession()
         startSession()
     }
+    
+    // 写真撮影ボタンの処理
+    func takePhotoAfterTappedTakeButton() {
+        let setting = AVCapturePhotoSettings()
+        setting.flashMode = .off
+        self.outputPhoto.capturePhoto(with: setting, delegate: self as AVCapturePhotoCaptureDelegate)
+    }
+    
+    // 撮影された写真を取得
+    func pullImageTaken() -> UIImage {        
+        return self.imageModel.image
+    }
 }
     
-extension CapturePhotoViewModel: AVCapturePhotoCaptureDelegate{    
+extension CameraViewModel: AVCapturePhotoCaptureDelegate{    
     // Prepare a session for iPhone/iPad camera
      private func prepareCameraSession() {
          self.captureSession.sessionPreset = .photo
@@ -93,7 +104,7 @@ extension CapturePhotoViewModel: AVCapturePhotoCaptureDelegate{
          if let imageData = photo.fileDataRepresentation() {
              if let uiImage = UIImage(data: imageData) {
                  // Notifiy image value
-                 self.image  = uiImage
+                self.imageModel.image = uiImage
              }
          }
      }

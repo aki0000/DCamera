@@ -9,9 +9,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        CapturePhotoView()
-        .overlay(TakeButtonView())        
+    
+    @ObservedObject var cameraViewModel    = CameraViewModel()
+    @ObservedObject var directionViewModel = DirectionViewModel()
+    
+    var body: some View {        
+        CapturePhotoView(cameraViewModel: self.cameraViewModel)
+            .overlay(DirectionView(directionViewModel: self.directionViewModel))
+            .overlay(TakeButton(cameraViewModel: self.cameraViewModel, directionViewModel: self.directionViewModel))
     }
 }
 

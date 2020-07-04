@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CapturePhotoView: UIViewRepresentable {
     
-    var capturePhotpViewModel = CapturePhotoViewModel()
+    var cameraViewModel: CameraViewModel
     
     func makeUIView(context: Context) -> UIView {
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
@@ -18,13 +18,13 @@ struct CapturePhotoView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIView, context: Context) {
-        self.capturePhotpViewModel.previewLayer.frame = uiView.frame        
-        uiView.layer.addSublayer(self.capturePhotpViewModel.previewLayer)
+        self.cameraViewModel.previewLayer.frame = uiView.frame
+        uiView.layer.addSublayer(self.cameraViewModel.previewLayer)
     }
 }
 
 struct CapturePhotoView_Previews: PreviewProvider{
     static var previews: some View {
-        CapturePhotoView()
+        CapturePhotoView(cameraViewModel: CameraViewModel())
     }
 }
