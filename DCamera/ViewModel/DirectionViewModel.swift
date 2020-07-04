@@ -12,24 +12,26 @@ import SwiftUI
 
 class DirectionViewModel: NSObject, ObservableObject {
       
+    // ユーザーの方角の値
     @Published var gettingHeading = 0.0     
-    // Image which CAShapeLayer is rendered
+    // Imageモデル
     private var imageModel       = ImageModel()
-    // Direction UI for CAShepeLayer
+    // 方角UIの方角を指すCAShapeLayer
     var directionLayer = CAShapeLayer()
-    // Direction Circle UI for CAShepeLayer
+    // 方角UIの土台となる円のCAShapeLayer
     var circleLayer    = CAShapeLayer()
-    // Direction which is shown as UI
+    // アングル値
     private var angle: (CGFloat, CGFloat) = (0.0, 0.0)
-    // Center position for UIs
+    // 配置する方角UIの位置
     private var position        = CGPoint()
     // LocationManager
     private var locationManager = CLLocationManager()
-    // Radius
+    // 方角UIの半径
     private var radius: CGFloat = 0.0
-    // fram
+    // 方角UIのFrame
     private var frame           = CGRect()
             
+    // 初期化
     override init() {
         super.init()
         self.locationManager.delegate = self
@@ -44,12 +46,12 @@ class DirectionViewModel: NSObject, ObservableObject {
         startToUpdate()
     }
     
-    // Start Heading of LocationManager
+    // ユーザーの方角の更新を開始
     private func startToUpdate() {
         self.locationManager.startUpdatingHeading()
     }
     
-    // Capture UIs as UIImage
+    // 方角UIをUIImageとしてキャプチャー
     func captureDirectionView() {
         let frame = UIScreen.main.bounds
         UIGraphicsBeginImageContextWithOptions(frame.size, false, 0.75)
@@ -63,11 +65,12 @@ class DirectionViewModel: NSObject, ObservableObject {
         }
     }
     
+    // キャプチャーされた方角UIのUIImageを取得
     func pullDirectionImage() -> UIImage {
         return self.imageModel.image
     }
     
-    // Update Direction UI
+    // 方角UIの更新
     func updateDirectionLayer() -> CAShapeLayer {
         // When makeUIViewController only
         self.directionLayer.path = UIBezierPath(arcCenter: self.position,
@@ -78,7 +81,7 @@ class DirectionViewModel: NSObject, ObservableObject {
         return self.directionLayer
     }
     
-    // Make Circle part which is become for foundation for direction UI
+    // 方角UIの土台となる円の作成
     private func makeCircleLayer(center: CGPoint) -> CAShapeLayer {
         let circleLayer         = CAShapeLayer()
         circleLayer.frame       = self.frame
@@ -93,8 +96,8 @@ class DirectionViewModel: NSObject, ObservableObject {
         return circleLayer
     }
     
-    // Calculation for Heaging Value
-    // Reference point is -5/9*pi < θ < -2/9*pi
+    // 方角の値を計算
+    // 北となる基準: -5/9*pi < θ < -2/9*pi
     private func calculateHeadingVaule(heading: Double) -> (CGFloat, CGFloat) {
         let referAngle = degreeToRadian(degree: CGFloat(heading))
         let startAngle = referAngle + degreeToRadian(degree: -100)
@@ -102,7 +105,7 @@ class DirectionViewModel: NSObject, ObservableObject {
         return (startAngle, endAngle)
     }
         
-    // Translate degree to radiao
+    // 角からラジアンに変換
     private func degreeToRadian(degree: CGFloat) -> CGFloat {
         return (degree * CGFloat.pi) / 180.0
     }
@@ -110,11 +113,13 @@ class DirectionViewModel: NSObject, ObservableObject {
 }
 
 extension DirectionViewModel: CLLocationManagerDelegate {
+    // ユーザーの方角の値が更新された後
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         self.gettingHeading = Double(newHeading.magneticHeading)
         self.angle = calculateHeadingVaule(heading: self.gettingHeading)
     }
     
+    // ユーザーの方角の値が更新失敗した場合
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         NSLog("Locatinon Getting Error")
     }

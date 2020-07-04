@@ -10,7 +10,9 @@ import SwiftUI
 
 struct ContentView: View {
     
+    // カメラ処理用ViewModel
     @ObservedObject var cameraViewModel    = CameraViewModel()
+    // 方角UI用ViewModel
     @ObservedObject var directionViewModel = DirectionViewModel()
     
     var body: some View {        

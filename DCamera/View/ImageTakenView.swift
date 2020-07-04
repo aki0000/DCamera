@@ -11,22 +11,26 @@ import UIKit
 
 struct ImageTakenView: View {
     
+    // 現在表示されているViewの状態を管理
     @Environment(\.presentationMode) var presentationMode
     
+    // 撮影された写真のUIImage
     var image: UIImage
+    // 方角UIのUIImage
     var directionImage: UIImage
-    
+    // 撮影View用のViewModel
     var imageTakenViewModel = ImageTakenViewModel()
     
     var body: some View {
         VStack {
+            // 合成されたImageを表示
             Image(uiImage: self.imageTakenViewModel.pullImageComposed(image: self.image, directionImage: self.directionImage))
                 .resizable()
                 .aspectRatio( 0.75, contentMode: .fit)
             HStack {
-                // Save & Cancell Button
+                // Save/Cancelボタン
                 Button(action: {
-                    // Action when the user tap cancel button
+                    // Cancelボタンがタップされた後のアクション
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("Cancel")
@@ -34,7 +38,8 @@ struct ImageTakenView: View {
                 })
                 Spacer()
                 Button(action: {
-                    // Action when the user tap saved button
+                    // Saveボタンがタップされた後のアクション
+                    // 合成されたUIImageを写真として保存
                     self.imageTakenViewModel.savedComposedImage()
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {

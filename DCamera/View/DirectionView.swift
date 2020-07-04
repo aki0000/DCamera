@@ -10,6 +10,7 @@ import SwiftUI
 
 struct DirectionView: UIViewRepresentable {
     
+    // 方角UIのViewModel
     @ObservedObject var directionViewModel: DirectionViewModel
     
     func makeUIView(context: Context) -> UIView {

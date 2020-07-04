@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class ImageModel {
+    
     var image: UIImage
     
     init() {

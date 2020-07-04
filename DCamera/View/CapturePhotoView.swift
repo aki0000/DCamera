@@ -10,8 +10,9 @@ import SwiftUI
 
 struct CapturePhotoView: UIViewRepresentable {
     
+    // カメラ用のViewModel
     var cameraViewModel: CameraViewModel
-    
+        
     func makeUIView(context: Context) -> UIView {
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         return UIView(frame: frame)

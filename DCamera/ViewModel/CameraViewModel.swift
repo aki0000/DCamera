@@ -12,18 +12,19 @@ import UIKit
 
 class CameraViewModel: NSObject, ObservableObject {
     
+    // Imageモデル
     var imageModel = ImageModel()
     // Layer for preview
     var previewLayer: AVCaptureVideoPreviewLayer!
-    // Session
+    // セッション
     private let captureSession = AVCaptureSession()
-    // Be Taken a photo image
+    // アウトプット
     private var outputPhoto    = AVCapturePhotoOutput()
-    // Main Device
+    // メインデバイス
     private var mainDevice:      AVCaptureDevice!
-    // InCamera Device
+    // インカメラ
     private var incameraDevice:  AVCaptureDevice!
-    // Current Device
+    // 現在設定されているデバイス
     private var currentDevice:   AVCaptureDevice!
     
     override init() {
@@ -48,12 +49,12 @@ class CameraViewModel: NSObject, ObservableObject {
 }
     
 extension CameraViewModel: AVCapturePhotoCaptureDelegate{    
-    // Prepare a session for iPhone/iPad camera
+    // カメラセッションの準備
      private func prepareCameraSession() {
          self.captureSession.sessionPreset = .photo
      }
      
-     // Set up an available Camera Device
+     // 使用可能なデバイスの設定
      private func setUpDevice() {
          let deviceDiscocerySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: .video, position: .unspecified)
          let devices = deviceDiscocerySession.devices
@@ -64,11 +65,11 @@ extension CameraViewModel: AVCapturePhotoCaptureDelegate{
                  self.incameraDevice = device
              }
          }
-         // Initiate Device is Main Device
+         // 現在のデバイスをメインデバイスに設定
          self.currentDevice = self.mainDevice
      }
      
-     // Begin a session
+     // セッションの起動
      private func beginSession() {
          do {
              let captureDeviceInput = try AVCaptureDeviceInput(device: self.currentDevice)
@@ -87,19 +88,19 @@ extension CameraViewModel: AVCapturePhotoCaptureDelegate{
          }
      }
      
-     // Start a session
+     // セッション開始
      func startSession() {
          if self.captureSession.isRunning { return }
          captureSession.startRunning()
      }
      
-     // End a session
+     // セッション終了
      func endSession() {
          if !captureSession.isRunning { return }
          captureSession.stopRunning()
      }
      
-     // Delegate when the use take a photo
+     // 撮影された写真の出力処理
      func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
          if let imageData = photo.fileDataRepresentation() {
              if let uiImage = UIImage(data: imageData) {

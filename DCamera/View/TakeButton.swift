@@ -10,21 +10,26 @@ import SwiftUI
 
 struct TakeButton: View {
     
+    // 写真を撮影した後のフラグ: 写真のImageと方角UIのImageが取得できた後にフラグが変化する
     @State var isTake = false
     
+    // カメラ用のViewModel
     var cameraViewModel: CameraViewModel
+    // 方角UIのViewModel
     var directionViewModel: DirectionViewModel
         
     var body: some View {
         Button(action: {
             // 写真の撮影処理を実行
             self.cameraViewModel.takePhotoAfterTappedTakeButton()
+            // 方角UIのCAShapeLayerからUIImageへの変換に遅延があるため、同期処理とする
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                // 撮影した時の方角UIのImageをキャウチャーする
                 self.directionViewModel.captureDirectionView()
+                // 撮影フラグを発砲
                 self.isTake.toggle()
             })
-        }, label: {
-            // ボタンの画像を格納
+        }, label: {        
           Image("button")
             .renderingMode(Image.TemplateRenderingMode?.init(Image.TemplateRenderingMode.original))
         })
