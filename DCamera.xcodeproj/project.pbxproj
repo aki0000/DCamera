@@ -15,6 +15,8 @@
 		6155BB7624B015730074D40D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6155BB7424B015730074D40D /* LaunchScreen.storyboard */; };
 		6155BB8124B015730074D40D /* DCameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6155BB8024B015730074D40D /* DCameraTests.swift */; };
 		6155BB8C24B015730074D40D /* DCameraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6155BB8B24B015730074D40D /* DCameraUITests.swift */; };
+		6155BB9E24B017780074D40D /* TakeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6155BB9D24B017780074D40D /* TakeButtonView.swift */; };
+		6155BBA024B018AB0074D40D /* TakeButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6155BB9F24B018AB0074D40D /* TakeButtonViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		6155BB8B24B015730074D40D /* DCameraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCameraUITests.swift; sourceTree = "<group>"; };
 		6155BB8D24B015730074D40D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6155BB9C24B015F70074D40D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		6155BB9D24B017780074D40D /* TakeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeButtonView.swift; sourceTree = "<group>"; };
+		6155BB9F24B018AB0074D40D /* TakeButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeButtonViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +148,7 @@
 		6155BB9924B015BE0074D40D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6155BB9D24B017780074D40D /* TakeButtonView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 		6155BB9A24B015CB0074D40D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				6155BB9F24B018AB0074D40D /* TakeButtonViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -294,8 +300,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6155BB6A24B0156E0074D40D /* AppDelegate.swift in Sources */,
+				6155BBA024B018AB0074D40D /* TakeButtonViewModel.swift in Sources */,
 				6155BB6C24B0156E0074D40D /* SceneDelegate.swift in Sources */,
 				6155BB6E24B0156E0074D40D /* ContentView.swift in Sources */,
+				6155BB9E24B017780074D40D /* TakeButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,7 +480,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pman.DCamera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -492,7 +500,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pman.DCamera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
