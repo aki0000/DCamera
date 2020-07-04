@@ -49,6 +49,7 @@
 		6155BB8724B015730074D40D /* DCameraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DCameraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6155BB8B24B015730074D40D /* DCameraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCameraUITests.swift; sourceTree = "<group>"; };
 		6155BB8D24B015730074D40D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6155BB9C24B015F70074D40D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +80,7 @@
 		6155BB5D24B0156E0074D40D = {
 			isa = PBXGroup;
 			children = (
+				6155BB9C24B015F70074D40D /* README.md */,
 				6155BB6824B0156E0074D40D /* DCamera */,
 				6155BB7F24B015730074D40D /* DCameraTests */,
 				6155BB8A24B015730074D40D /* DCameraUITests */,
@@ -102,6 +104,9 @@
 				6155BB6924B0156E0074D40D /* AppDelegate.swift */,
 				6155BB6B24B0156E0074D40D /* SceneDelegate.swift */,
 				6155BB6D24B0156E0074D40D /* ContentView.swift */,
+				6155BB9B24B015DB0074D40D /* Model */,
+				6155BB9A24B015CB0074D40D /* ViewModel */,
+				6155BB9924B015BE0074D40D /* View */,
 				6155BB6F24B015730074D40D /* Assets.xcassets */,
 				6155BB7424B015730074D40D /* LaunchScreen.storyboard */,
 				6155BB7724B015730074D40D /* Info.plist */,
@@ -134,6 +139,27 @@
 				6155BB8D24B015730074D40D /* Info.plist */,
 			);
 			path = DCameraUITests;
+			sourceTree = "<group>";
+		};
+		6155BB9924B015BE0074D40D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6155BB9A24B015CB0074D40D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6155BB9B24B015DB0074D40D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
