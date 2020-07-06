@@ -18,7 +18,9 @@ struct ContentView: View {
     var body: some View {        
         CapturePhotoView(cameraViewModel: self.cameraViewModel)
             .overlay(DirectionView(directionViewModel: self.directionViewModel))
-            .overlay(TakeButton(cameraViewModel: self.cameraViewModel, directionViewModel: self.directionViewModel))
+            .overlay(TakeButton(cameraViewModel: self.cameraViewModel, directionViewModel: self.directionViewModel)
+                .position(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height - 80)
+        )
     }
 }
 

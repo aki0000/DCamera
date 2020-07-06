@@ -32,6 +32,8 @@ struct TakeButton: View {
         }, label: {        
           Image("button")
             .renderingMode(Image.TemplateRenderingMode?.init(Image.TemplateRenderingMode.original))
+            .resizable()
+            .frame(width: 120, height: 120, alignment: .center)
         })
             // 撮影後のViewを表示
             .sheet(isPresented: self.$isTake) {
