@@ -15,11 +15,17 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Need to be enable the permission which the user can take a photo</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Need to be enable the permission which is shown Direction UI in your screen</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Need to be enable the permission which the user can save a photo taken</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -54,11 +60,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>本アプリはカメラを利用します</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>本アプリは位置情報を取得します</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>本アプリは撮影した写真をiPhoneに保存します</string>
 </dict>
 </plist>
