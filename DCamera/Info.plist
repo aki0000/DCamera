@@ -20,8 +20,6 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Need to be enable the permission which is shown Direction UI in your screen</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Need to be enable the permission which the user can take a photo</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>

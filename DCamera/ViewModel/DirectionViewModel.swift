@@ -80,6 +80,7 @@ class DirectionViewModel: NSObject, ObservableObject {
                                                 clockwise: true).cgPath
         return self.directionLayer
     }
+        
     
     // 方角UIの土台となる円の作成
     private func makeCircleLayer(center: CGPoint) -> CAShapeLayer {
@@ -97,11 +98,11 @@ class DirectionViewModel: NSObject, ObservableObject {
     }
     
     // 方角の値を計算
-    // 北となる基準: -5/9*pi < θ < -2/9*pi
+    // 北となる基準: -1/18*pi < θ < 1/18*pi
     private func calculateHeadingVaule(heading: Double) -> (CGFloat, CGFloat) {
         let referAngle = degreeToRadian(degree: CGFloat(heading))
-        let startAngle = referAngle + degreeToRadian(degree: -100)
-        let endAngle   = referAngle + degreeToRadian(degree: -80)
+        let startAngle = referAngle + degreeToRadian(degree: -10)
+        let endAngle   = referAngle + degreeToRadian(degree: 10)
         return (startAngle, endAngle)
     }
         
@@ -123,6 +124,7 @@ extension DirectionViewModel: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         NSLog("Locatinon Getting Error")
     }
+    
 }
 
 
