@@ -21,9 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Need to be enable the permission which the user can take a photo</string>
+	<string>このアプリは方角UI付きの写真を撮影するのにiPhoneのカメラにアクセスします。許可をする必要があります。</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Need to be enable the permission which the user can save a photo taken</string>
+	<string>このアプリは撮影した方角UI付きの写真を保存するのにiPhoneの写真にアクセスします。許可をする必要があります。</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
