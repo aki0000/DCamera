@@ -15,12 +15,13 @@ struct ContentView: View {
     // 方角UI用ViewModel
     @ObservedObject var directionViewModel = DirectionViewModel()
     
-    var body: some View {        
-        CapturePhotoView(cameraViewModel: self.cameraViewModel)
-            .overlay(DirectionView(directionViewModel: self.directionViewModel))
-            .overlay(TakeButton(cameraViewModel: self.cameraViewModel, directionViewModel: self.directionViewModel)
+    var body: some View {
+        ZStack {
+            CapturePhotoView(cameraViewModel: self.cameraViewModel)
+            DirectionView(directionViewModel: self.directionViewModel)
+            TakeButton(cameraViewModel: self.cameraViewModel, directionViewModel: self.directionViewModel)
                 .position(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height - 80)
-        )
+        }
     }
 }
 
